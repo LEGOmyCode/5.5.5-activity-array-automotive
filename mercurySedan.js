@@ -1,11 +1,9 @@
 //this includes the vehicle class as a module
-const VehicleModule = require("./vehicleBaseClass")
+const VehicleModule = require("./vehicle")
 
-//this shows how to call from this module...
-let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
-console.log(v.make)
 
-class Car extends VehicleModule{
+
+class Car extends VehicleModule.Vehicle{
     constructor(make,model,year,color,mileage){
     super(make, model, year, color, mileage);
     this.maximumPassengers = 5;
@@ -13,7 +11,7 @@ class Car extends VehicleModule{
     this.numberOfWheels = 4;
     this.maximumSpeed = 160;
     this.fuel = 10;
-    this.scheduleService = false;
+    //this.scheduleService = false;
     }
     start() {
         if (this.fuel > 0) {
@@ -48,3 +46,13 @@ class Car extends VehicleModule{
         }
     }
 }
+let myCar = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "33000");
+console.log(myCar.make);
+console.log(myCar);
+let otherCar = new Car("Mecury", "Sedan", "1965", "color");
+console.log(otherCar);
+console.log(otherCar.start());
+console.log(otherCar.loadPassenger(2));
+//I don't understand this part it says to define as a property and a method using the same name scheduleService
+//having the same name causes issues
+console.log(otherCar.scheduleService('5000'));
